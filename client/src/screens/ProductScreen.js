@@ -30,7 +30,7 @@ const ProductScreen = ({match}) => {
                     </ListGroup.Item>
                 </ListGroup>
             </Col>
-            <Col md={2}>
+            <Col md={3}>
                 <Card>
                     <ListGroup.Item>
                         <Row>
@@ -45,7 +45,7 @@ const ProductScreen = ({match}) => {
                         </Row>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <Button className='btn-block' type ='button' disabled={product.countInStock===0}>Add To Cart</Button>
+                        <Button className='btn-block btn-dark' type ='button' disabled={product.countInStock===0}>Add To Cart</Button>
                     </ListGroup.Item>
                 </Card>
             </Col>

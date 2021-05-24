@@ -22,16 +22,7 @@ h3{
 }
 
 /*---------------------- CARD CSS-------------------------- */
-.cardRadius{
-  margin: 30px auto;
-  /* width: 300px;
-  height: 300px; */
-  border-radius: 20px;
-box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
-  cursor: pointer;
-  transition: 0.4s;
-  
-}
+
 .cardRadius:hover{
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
@@ -43,4 +34,21 @@ box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.2
   height: inherit; */
   border-radius: 10px;
   object-fit: cover;
+}
+.cardSize{
+  margin: 30px auto;
+  /* width: 300px;
+  height: 300px; */
+  border-radius: 20px;
+box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+  
+}
+.cardTitle{
+  padding: 0 2rem 0 0 ;
+  
+}
+.btn-block{
+  margin-left: 1rem;
 }
