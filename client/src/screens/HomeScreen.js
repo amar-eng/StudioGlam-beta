@@ -1,8 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect  } from 'react'
 import {Row,Col} from 'react-bootstrap'
-import products from '../products'
+import axios from 'axios'
 import Product from '../components/Products/Product'
 const HomeScreen = () => {
+    const [products, setProducts] = useState([])
+
+    useEffect(()=>{
+        const fetchProducts= async () =>{
+            const {data} = await axios.get('http://localhost:5000/api/products')
+            // to get this to work add a proxy which is added in client/package.json under name
+
+            setProducts(data)
+        }
+        fetchProducts()
+    }, [])
+
     return (
         <>
             <h1>Latest Proucts</h1>
