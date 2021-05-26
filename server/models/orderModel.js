@@ -26,7 +26,7 @@ const orderSchema = mongoose.Schema({
         province: {type: String, required:true},
     }, 
     paymentMethod: {
-        type: string, 
+        type: String, 
         required: true
     },
     paymentResult: {
