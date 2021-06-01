@@ -3,6 +3,8 @@ import {Row,Col} from 'react-bootstrap'
 import {useDispatch, useSelector} from 'react-redux'
 import Product from '../components/Products/Product'
 import {listProducts} from '../actions/productActions'
+import Message from '../components/Mesage'
+import Loader from '../components/Loader'
 const HomeScreen = () => {
     const dispatch =useDispatch()
     const productList =useSelector(state => state.productList)
@@ -12,10 +14,15 @@ const HomeScreen = () => {
         dispatch(listProducts())
     }, [dispatch])
     // const products = []
+    // here to check the products loading before implementing the useSelector
+
     return (
         <>
             <h1>Latest Proucts</h1>
-            {loading ? <h2>Loading...</h2>: error ? <h3>{error}</h3> : 
+            {loading ? 
+            <Loader>Loading...</Loader>
+            : error ? <Message variant ='danger'>{error}</Message> 
+            : 
             <Row>
                 {products.map(product =>(
                     <Col key ={product._id} sm={12} md ={6} lg={4} xl={3}>
