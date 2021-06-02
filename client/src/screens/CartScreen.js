@@ -83,9 +83,11 @@ const CartScreen = ({match, location,history}) => {
                                    Proceed To Checkout
                                </Button>
                            </ListGroup.Item>
-                           <Link className = 'btn btn-dark my-3' to ='/'>Go Back</Link>
+                           
                        </ListGroup>
-                    </Card>                     
+                       
+                    </Card>  
+                    <Link className = 'btn btn-dark my-4' style={{  backgroundColor:'green'}} to ='/'>Continue Shopping</Link>                   
             </Col>
             
 
