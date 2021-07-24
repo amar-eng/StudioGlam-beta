@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Mesage";
+import Mesage from "../components/Mesage";
 import Loader from "../components/Loader";
 import { USER_UPDATE_PROFILE_RESET } from "../constants/userConstants";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
@@ -51,10 +51,10 @@ const ProfileScreen = ({ location, history }) => {
     <Row>
       <Col md={3}>
         <h2>USER PROFILE</h2>
-        {message && <Message variant="danger">{message}</Message>}
-        {error && <Message variant="danger">{error}</Message>}
+        {message && <Mesage variant="danger">{message}</Mesage>}
+        {error && <Mesage variant="danger">{error}</Mesage>}
         {}
-        {success && <Message variant="success">Profile Updated</Message>}
+        {success && <Mesage variant="success">Profile Updated</Mesage>}
 
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
