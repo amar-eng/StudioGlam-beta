@@ -10,6 +10,7 @@ const ShippingScreen = ({ history }) => {
 
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
+  const [province, setProvince] = useState(shippingAddress.province);
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
   const [country, setCountry] = useState(shippingAddress.country);
 
@@ -40,10 +41,20 @@ const ShippingScreen = ({ history }) => {
           <Form.Label>City</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter city"
+            placeholder="Enter City"
             value={city}
             required
             onChange={(e) => setCity(e.target.value)}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group controlId="province">
+          <Form.Label>Province</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Enter Province"
+            value={province}
+            required
+            onChange={(e) => setProvince(e.target.value)}
           ></Form.Control>
         </Form.Group>
         <Form.Group controlId="postalCode">
