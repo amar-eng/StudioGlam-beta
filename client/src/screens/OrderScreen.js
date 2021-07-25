@@ -24,7 +24,7 @@ const OrderScreen = ({ match }) => {
 
   useEffect(() => {
     dispatch(getOrderDetails(orderId));
-  }, []);
+  }, [dispatch, orderId]);
 
   return loading ? (
     <Loader />
@@ -54,7 +54,7 @@ const OrderScreen = ({ match }) => {
               </p>
               {order.isDelivered ? (
                 <Mesage variant="success">
-                  Delivered on {order.DeliveredAt}
+                  Delivered on {order.deliveredAt}
                 </Mesage>
               ) : (
                 <Mesage variant="danger">Not Delivered</Mesage>
