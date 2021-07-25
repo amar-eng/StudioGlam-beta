@@ -47,7 +47,7 @@ const ShippingScreen = ({ history }) => {
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
         </Form.Group>
-        <Form.Group controlId="province">
+        {/* <Form.Group controlId="province">
           <Form.Label>Province</Form.Label>
           <Form.Control
             type="text"
@@ -56,7 +56,7 @@ const ShippingScreen = ({ history }) => {
             required
             onChange={(e) => setProvince(e.target.value)}
           ></Form.Control>
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group controlId="postalCode">
           <Form.Label>Postal Code</Form.Label>
           <Form.Control
