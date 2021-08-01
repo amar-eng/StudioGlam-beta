@@ -9,7 +9,7 @@ import {
   deleteProduct,
   createProduct,
 } from "../actions/productActions";
-
+import { PRODUCT_CREATE_RESET } from "../constants/productConstants";
 const ProductListSecreen = ({ history, match }) => {
   const dispatch = useDispatch();
 
@@ -23,16 +23,37 @@ const ProductListSecreen = ({ history, match }) => {
     success: successDelete,
   } = productDelete;
 
+  const productCreate = useSelector((state) => state.productCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    product: createdProduct,
+  } = productCreate;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (userInfo && userInfo.isAdmin) {
-      dispatch(listProducts());
-    } else {
+    dispatch({ type: PRODUCT_CREATE_RESET });
+
+    if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo, successDelete]);
+
+    if (successCreate) {
+      history.push(`/admin/product/${createdProduct._id}/edit`);
+    } else {
+      dispatch(listProducts());
+    }
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdProduct,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
@@ -40,9 +61,8 @@ const ProductListSecreen = ({ history, match }) => {
     }
   };
 
-  const createProductHandler = (product) => {
-    //  dispatch(createProduct());
-    console.log("create Product");
+  const createProductHandler = () => {
+    dispatch(createProduct());
   };
   return (
     <>
@@ -58,8 +78,8 @@ const ProductListSecreen = ({ history, match }) => {
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Mesage variant="danger">{errorDelete}</Mesage>}
-      {/* {loadingCreate && <Loader />}
-      {errorCreate && <Mesage variant="danger">{errorCreate}</Mesage>} */}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Mesage variant="danger">{errorCreate}</Mesage>}
       {loading ? (
         <Loader />
       ) : error ? (
