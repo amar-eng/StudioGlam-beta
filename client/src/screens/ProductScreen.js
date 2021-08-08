@@ -181,6 +181,7 @@ const ProductScreen = ({ history, match }) => {
                         <Form.Control
                           as="select"
                           value={rating}
+                          className=" text-area"
                           onChange={(e) => setRating(e.target.value)}
                         >
                           <option value="">Select...</option>
@@ -197,6 +198,7 @@ const ProductScreen = ({ history, match }) => {
                           as="textarea"
                           row="3"
                           value={comment}
+                          className=" text-area"
                           onChange={(e) => setComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
@@ -204,6 +206,7 @@ const ProductScreen = ({ history, match }) => {
                         disabled={loadingProductReview}
                         type="submit"
                         variant="primary"
+                        className=" submit-button"
                         style={{ marginTop: "1rem" }}
                       >
                         Submit

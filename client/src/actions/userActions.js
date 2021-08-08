@@ -60,10 +60,15 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("cartItems");
+  localStorage.removeItem("shippingAddress");
+  localStorage.removeItem("paymentMethod");
+  localStorage.removeItem("userInfo");
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: ORDER_LIST_MY_RESET });
   dispatch({ type: USER_LIST_RESET });
+  document.location.href = "/login";
 };
 
 export const register = (name, email, password) => async (dispatch) => {
@@ -128,12 +133,16 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       payload: data,
     });
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
     dispatch({
       type: USER_DETAILS_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
     });
   }
 };
@@ -169,12 +178,16 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     });
     localStorage.setItem("userInfo", JSON.stringify(data));
   } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
     dispatch({
       type: USER_UPDATE_PROFILE_FAIL,
-      payload:
-        error.response && error.response.data.message
-          ? error.response.data.message
-          : error.message,
+      payload: message,
     });
   }
 };
@@ -206,9 +219,9 @@ export const listUsers = () => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
-    // if (message === "Not authorized, token failed") {
-    //   dispatch(logout());
-    // }
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
     dispatch({
       type: USER_LIST_FAIL,
       payload: message,
@@ -240,9 +253,9 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
-    // if (message === "Not authorized, token failed") {
-    //   dispatch(logout());
-    // }
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
     dispatch({
       type: USER_DELETE_FAIL,
       payload: message,
@@ -279,9 +292,9 @@ export const updateUser = (user) => async (dispatch, getState) => {
       error.response && error.response.data.message
         ? error.response.data.message
         : error.message;
-    // if (message === "Not authorized, token failed") {
-    //   dispatch(logout());
-    // }
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
     dispatch({
       type: USER_UPDATE_FAIL,
       payload: message,

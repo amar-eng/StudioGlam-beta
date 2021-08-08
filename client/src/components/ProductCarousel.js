@@ -21,26 +21,29 @@ const ProductCarousel = () => {
   ) : error ? (
     <Mesage variant="danger">{error}</Mesage>
   ) : (
-    <Carousel pause="hover" className="bg-dark">
-      {products.map((product) => (
-        <Carousel.Item key={product._id}>
-          <Link to={`/product/${product._id}`}>
-            <Image
-              // className="d-block w-100"
-              src={product.image}
-              alt={product.name}
-              fluid
-              // style={{ width: "100%" }}
-            />
-            <Carousel.Caption className="carousel-caption">
-              <h2>
-                {product.name} (${product.price})
-              </h2>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <>
+      <h1>Top rated Products</h1>
+      <Carousel pause="hover" className="bg-darkk">
+        {products.map((product) => (
+          <Carousel.Item key={product._id}>
+            <Link to={`/product/${product._id}`}>
+              <Image
+                // className="d-block w-100"
+                src={product.image}
+                alt={product.name}
+                fluid
+                // style={{ width: "100%" }}
+              />
+              <Carousel.Caption className="carousel-caption">
+                <h2>
+                  {product.name} (${product.price})
+                </h2>
+              </Carousel.Caption>
+            </Link>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </>
   );
 };
 

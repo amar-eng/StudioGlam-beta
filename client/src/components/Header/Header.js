@@ -15,7 +15,13 @@ const Header = () => {
   };
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        bg="white"
+        variant="light"
+        expand="lg"
+        collapseOnSelect
+        style={{ backgroundColor: "red" }}
+      >
         <Container>
           <LinkContainer to="/">
             <Navbar.Brand>Studio Glam</Navbar.Brand>
