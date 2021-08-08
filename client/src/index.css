@@ -52,7 +52,8 @@ h3 {
 }
 
 h1 {
-  font-size: 1.5rem;
+  /* changes occured below */
+  font-size: 10.5rem;
   padding: 1rem 0;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 200;

@@ -81,9 +81,11 @@ const RegisterScreen = ({ location, history }) => {
           ></Form.Control>
         </Form.Group>
 
-        <Button type="submit" variant="primary">
-          Register
-        </Button>
+        <Link to={redirect ? `/orders` : "login"}>
+          <Button type="submit" variant="primary">
+            Register
+          </Button>
+        </Link>
       </Form>
       <Row className="py-3">
         <Col>
